@@ -12,7 +12,7 @@ Contiene dos pestañas (GridView y otro widget de ejemplo).
 Incluye un Drawer (menú lateral) con opciones para navegar a:
 
 ## 🔄 Ciclo de Vida (ciclo_vida_screen.dart)
-Demuestra el manejo de initState(), dispose(), y setState().
+Demuestra el manejo de build(), didChangeDependencies(), initState(), dispose(), y setState().
 
 ## 🛤 Paso de Parámetros (detalle_screen.dart)
 Recibe un parámetro de la URL y lo muestra en la interfaz.
