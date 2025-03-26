@@ -64,6 +64,27 @@ class _HomeViewState extends State<HomeView>
             },
           ),
           ListTile(
+            leading: const Icon(Icons.timer),
+            title: const Text('Timer'),
+            onTap: () {
+              GoRouter.of(context).go('/timer');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.keyboard_double_arrow_right),
+            title: const Text('Future'),
+            onTap: () {
+              GoRouter.of(context).go('/future');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.scale_outlined),
+            title: const Text('Isolate'),
+            onTap: () {
+              GoRouter.of(context).go('/isolate');
+            },
+          ),
+          ListTile(
             leading: const Icon(Icons.route),
             title: const Text('GoRouter'),
             onTap: () {
