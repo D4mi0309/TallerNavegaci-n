@@ -1,4 +1,6 @@
 import 'package:go_router/go_router.dart';
+import 'package:hola_mundo/views/ChuckNorris/chucknorris_detail_view.dart';
+import 'package:hola_mundo/views/ChuckNorris/chucknorris_listview.dart';
 import 'package:hola_mundo/views/Future/future_view.dart';
 import 'package:hola_mundo/views/Isolate/isolate_view.dart';
 import 'package:hola_mundo/views/Timer/timer_view.dart';
@@ -25,6 +27,18 @@ final GoRouter appRouter = GoRouter(
         final parametro = state.uri.queryParameters['parametro'] ?? 'Sin dato';
         return DetalleScreen(parametro: parametro);
       },
+    ),
+    GoRoute(
+      path: '/chucknorris',
+      name: 'ChuckNorris',
+      builder: (context, state) => const JokeListView(),
+    ),
+    GoRoute(
+      path: '/chucknorris/:category',
+      name: 'ChucknorrisDetail',
+      builder:
+          (context, state) =>
+              JokeDetailView(category: state.pathParameters['category']!),
     ),
   ],
 );

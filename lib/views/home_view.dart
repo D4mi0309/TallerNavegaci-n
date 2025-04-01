@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView>
           tabs: const [Tab(text: 'GridView'), Tab(text: 'Table')],
         ),
       ),
-      drawer: _buildMenu(context), // Menú lateral agregado
+      drawer: buildMenu(context), // Menú lateral agregado
       body: TabBarView(
         controller: _tabController,
         children: [_buildGridView(), _buildOtroWidget()],
@@ -44,7 +44,7 @@ class _HomeViewState extends State<HomeView>
   }
 
   /// Construye el menú lateral con opciones de navegación.
-  Widget _buildMenu(BuildContext context) {
+  Widget buildMenu(BuildContext context) {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -89,6 +89,13 @@ class _HomeViewState extends State<HomeView>
             title: const Text('GoRouter'),
             onTap: () {
               GoRouter.of(context).go('/detalle');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.api),
+            title: const Text('ChuckNorris'),
+            onTap: () {
+              GoRouter.of(context).go('/chucknorris');
             },
           ),
         ],

@@ -52,6 +52,13 @@ class CustomDrawer extends StatelessWidget {
               GoRouter.of(context).go('/detalle');
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.api),
+            title: const Text('ChuckNorris'),
+            onTap: () {
+              GoRouter.of(context).go('/chucknorris');
+            },
+          ),
         ],
       ),
     );
