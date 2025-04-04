@@ -18,6 +18,13 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
+            leading: const Icon(Icons.home),
+            title: const Text('Home'),
+            onTap: () {
+              GoRouter.of(context).go('/');
+            },
+          ),
+          ListTile(
             leading: const Icon(Icons.autorenew),
             title: const Text('Ciclo de Vida'),
             onTap: () {
@@ -57,6 +64,13 @@ class CustomDrawer extends StatelessWidget {
             title: const Text('ChuckNorris'),
             onTap: () {
               GoRouter.of(context).go('/chucknorris');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.house_siding),
+            title: const Text('establecimientos'),
+            onTap: () {
+              GoRouter.of(context).go('/establecimientos');
             },
           ),
         ],

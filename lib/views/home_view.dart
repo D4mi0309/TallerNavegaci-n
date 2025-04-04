@@ -98,6 +98,13 @@ class _HomeViewState extends State<HomeView>
               GoRouter.of(context).go('/chucknorris');
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.house_siding),
+            title: const Text('establecimientos'),
+            onTap: () {
+              GoRouter.of(context).go('/establecimientos');
+            },
+          ),
         ],
       ),
     );
