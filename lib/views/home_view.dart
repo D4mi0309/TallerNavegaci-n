@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hola_mundo/services/auth_services.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -15,7 +16,7 @@ class _HomeViewState extends State<HomeView>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -32,13 +33,17 @@ class _HomeViewState extends State<HomeView>
         backgroundColor: Color.fromRGBO(255, 162, 0, 1),
         bottom: TabBar(
           controller: _tabController,
-          tabs: const [Tab(text: 'GridView'), Tab(text: 'Table')],
+          tabs: const [
+            Tab(text: 'GridView'),
+            Tab(text: 'Table'),
+            Tab(text: 'Token'),
+          ],
         ),
       ),
       drawer: buildMenu(context), // Menú lateral agregado
       body: TabBarView(
         controller: _tabController,
-        children: [_buildGridView(), _buildOtroWidget()],
+        children: [_buildGridView(), _buildOtroWidget(), _buildTokenView()],
       ),
     );
   }
@@ -105,8 +110,68 @@ class _HomeViewState extends State<HomeView>
               GoRouter.of(context).go('/establecimientos');
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.login),
+            title: const Text('Iniciar sesión'),
+            onTap: () {
+              context.goNamed('login');
+              Navigator.pop(context); // Cierra el Drawer
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text('Cerrar sesión'),
+            onTap: () async {
+              final token = await AuthService().getToken();
+
+              if (token != null) {
+                await AuthService().logout();
+
+                if (!context.mounted) {
+                  return;
+                }
+                context.go('/login');
+              } else {
+                if (!context.mounted) return;
+                Navigator.pop(context); // Cierra el drawer
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('No hay sesión activa.')),
+                );
+              }
+            },
+          ),
         ],
       ),
+    );
+  }
+
+  Widget _buildTokenView() {
+    return FutureBuilder<String?>(
+      future: AuthService().getToken(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: CircularProgressIndicator(),
+          );
+        }
+
+        if (snapshot.hasError) {
+          return const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text('Error al cargar token'),
+          );
+        }
+
+        final token = snapshot.data;
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Token: ${token ?? "No hay token"}',
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+          ),
+        );
+      },
     );
   }
 

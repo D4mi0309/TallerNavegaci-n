@@ -10,6 +10,9 @@ import 'package:hola_mundo/views/Timer/timer_view.dart';
 import '../views/home_view.dart';
 import '../views/ciclo_vida/ciclo_vida_screen.dart';
 import '../views/paso_parametros/detalle_screen.dart';
+import 'package:hola_mundo/views/auth/login_page.dart';
+import 'package:hola_mundo/views/auth/register_page.dart';
+//import 'package:hola_mundo/views/profile_view.dart';
 
 final GoRouter appRouter = GoRouter(
   routes: [
@@ -64,6 +67,16 @@ final GoRouter appRouter = GoRouter(
         final id = int.parse(state.pathParameters['id']!);
         return EstablecimientoEditView(id: id);
       },
+    ),
+    GoRoute(
+      path: '/login',
+      name: 'login',
+      builder: (context, state) => const LoginPage(),
+    ),
+    GoRoute(
+      path: '/register',
+      name: 'register',
+      builder: (context, state) => const RegisterPage(),
     ),
   ],
 );
