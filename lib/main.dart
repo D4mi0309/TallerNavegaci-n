@@ -31,13 +31,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //! Obtiene el color actual del ThemeProvider
-    final themeColor = Provider.of<ThemeProvider>(context).color;
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final themeColor = themeProvider.color;
 
-    // go_router para navegación
     return MaterialApp.router(
-      theme: AppTheme.lightTheme(themeColor),
       title: 'Flutter Taller',
+      theme: AppTheme.lightTheme(themeColor),
+      darkTheme: AppTheme.darkTheme(themeColor),
+      themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
       routerConfig: appRouter,
     );
   }

@@ -21,33 +21,43 @@ class ChangeThemeView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Cambiar color del tema')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: GridView.count(
-          crossAxisCount: 3,
-          children:
-              availableColors.map((color) {
-                return GestureDetector(
-                  onTap: () {
-                    themeProvider.setColor(color);
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: color,
-                      border: Border.all(
-                        color:
-                            currentColor == color
-                                ? Colors.black
-                                : Colors.transparent,
-                        width: 4,
+      body: Column(
+        children: [
+          SwitchListTile(
+            title: const Text('Modo oscuro'),
+            value: themeProvider.isDarkMode,
+            onChanged: (value) {
+              themeProvider.toggleDarkMode(value);
+            },
+          ),
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 3,
+              children:
+                  availableColors.map((color) {
+                    return GestureDetector(
+                      onTap: () {
+                        themeProvider.setColor(color);
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: color,
+                          border: Border.all(
+                            color:
+                                currentColor == color
+                                    ? Colors.black
+                                    : Colors.transparent,
+                            width: 4,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                );
-              }).toList(),
-        ),
+                    );
+                  }).toList(),
+            ),
+          ),
+        ],
       ),
     );
   }

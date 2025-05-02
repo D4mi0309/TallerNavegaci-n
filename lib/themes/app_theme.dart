@@ -5,26 +5,48 @@ class AppTheme {
     return ThemeData(
       colorScheme: ColorScheme.fromSeed(
         seedColor: seedColor,
-        brightness: Brightness.light, // Tema claro
+        brightness: Brightness.light,
       ),
       useMaterial3: true,
       appBarTheme: AppBarTheme(
         centerTitle: true,
         elevation: 0,
-        backgroundColor: seedColor, // Color de fondo del AppBar
+        backgroundColor: seedColor,
         titleTextStyle: const TextStyle(
-          color: Colors.white, // Texto blanco para el AppBar
+          color: Colors.white,
           fontSize: 20,
           fontWeight: FontWeight.bold,
         ),
       ),
-      drawerTheme: const DrawerThemeData(
-        elevation: 0,
-        backgroundColor: Colors.white, // Fondo del Drawer
-      ),
+      drawerTheme: const DrawerThemeData(elevation: 0),
       textTheme: const TextTheme(
-        bodyLarge: TextStyle(color: Colors.black87), // Estilo de texto
+        bodyLarge: TextStyle(color: Colors.black87),
         bodyMedium: TextStyle(color: Colors.black87),
+      ),
+    );
+  }
+
+  static ThemeData darkTheme(Color seedColor) {
+    return ThemeData(
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: seedColor,
+        brightness: Brightness.dark,
+      ),
+      useMaterial3: true,
+      appBarTheme: AppBarTheme(
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: seedColor,
+        titleTextStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      drawerTheme: const DrawerThemeData(elevation: 0),
+      textTheme: const TextTheme(
+        bodyLarge: TextStyle(color: Colors.white),
+        bodyMedium: TextStyle(color: Colors.white),
       ),
     );
   }

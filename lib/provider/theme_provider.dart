@@ -5,9 +5,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 ///! Usa "ChangeNotifier" para que los widgets escuchen los cambios y se redibujen.
 class ThemeProvider with ChangeNotifier {
   Color _color = const Color.fromARGB(255, 20, 83, 165);
+  bool _isDarkMode = false;
 
   // se usa color get para que el provider pueda acceder al color
   Color get color => _color;
+  bool get isDarkMode => _isDarkMode;
 
   /// Constructor: al iniciar el provider, carga el color desde SharedPreferences
   ThemeProvider() {
@@ -19,10 +21,12 @@ class ThemeProvider with ChangeNotifier {
   Future<void> _loadColor() async {
     final prefs = await SharedPreferences.getInstance();
     final colorGuardado = prefs.getString('color');
+    final darkMode = prefs.getBool('darkMode') ?? false;
     if (colorGuardado != null) {
       // share preferences guarda el color como un string, por lo que se convierte a int
       // y luego a Color, se hace con el fin de que el color se guarde en formato hexadecimal
       _color = Color(int.parse(colorGuardado));
+      _isDarkMode = darkMode; // Asigna el modo oscuro si está guardado
       notifyListeners(); // Notifica para que se actualice la interfaz
     }
   }
@@ -35,5 +39,13 @@ class ThemeProvider with ChangeNotifier {
     // Guarda el color en `shared_preferences` como un entero (hexadecimal)
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('color', newColor.toARGB32().toString());
+  }
+
+  Future<void> toggleDarkMode(bool value) async {
+    _isDarkMode = value;
+    notifyListeners();
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('darkMode', value);
   }
 }
