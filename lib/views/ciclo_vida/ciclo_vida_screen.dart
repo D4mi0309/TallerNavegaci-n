@@ -25,16 +25,12 @@ class _CicloVidaScreenState extends State<CicloVidaScreen> {
   Widget build(BuildContext context) {
     print('build: Construyendo la interfaz');
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ciclo de Vida'),
-        backgroundColor: Color.fromRGBO(255, 162, 0, 1),
-      ),
+      appBar: AppBar(title: const Text('Ciclo de Vida')),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.orange),
               child: Text(
                 'Menú de navegación',
                 style: TextStyle(color: Colors.white, fontSize: 24),

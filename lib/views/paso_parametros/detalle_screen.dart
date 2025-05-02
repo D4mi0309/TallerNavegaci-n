@@ -9,16 +9,12 @@ class DetalleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Parametros'),
-        backgroundColor: Color.fromRGBO(255, 162, 0, 1),
-      ),
+      appBar: AppBar(title: const Text('Parametros')),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.orange),
               child: Text(
                 'Menú de navegación',
                 style: TextStyle(color: Colors.white, fontSize: 24),

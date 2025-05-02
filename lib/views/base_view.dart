@@ -10,10 +10,7 @@ class BaseView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-        backgroundColor: Color.fromRGBO(255, 168, 76, 1),
-      ),
+      appBar: AppBar(title: Text(title)),
       drawer: const CustomDrawer(), // Drawer persistente para todas las vistas
       body: body,
     );

@@ -15,13 +15,12 @@ class CustomDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            decoration: const BoxDecoration(color: Colors.orangeAccent),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   user?.name ?? 'Usuario desconocido',
-                  style: const TextStyle(color: Colors.white, fontSize: 20),
+                  style: const TextStyle(color: Colors.black, fontSize: 20),
                 ),
                 const SizedBox(height: 4),
                 Text(
@@ -115,6 +114,13 @@ class CustomDrawer extends StatelessWidget {
                   const SnackBar(content: Text('No hay sesión activa.')),
                 );
               }
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.color_lens),
+            title: const Text('Cambiar tema'),
+            onTap: () {
+              context.pushNamed('cambiar-tema');
             },
           ),
         ],

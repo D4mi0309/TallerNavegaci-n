@@ -30,7 +30,6 @@ class _HomeViewState extends State<HomeView>
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pagina Principal'),
-        backgroundColor: Color.fromRGBO(255, 162, 0, 1),
         bottom: TabBar(
           controller: _tabController,
           tabs: const [
@@ -55,10 +54,9 @@ class _HomeViewState extends State<HomeView>
         padding: EdgeInsets.zero,
         children: [
           const DrawerHeader(
-            decoration: BoxDecoration(color: Colors.orange),
             child: Text(
               'Menú de Navegación',
-              style: TextStyle(color: Colors.white, fontSize: 20),
+              style: TextStyle(color: Colors.black, fontSize: 20),
             ),
           ),
           ListTile(
@@ -140,6 +138,13 @@ class _HomeViewState extends State<HomeView>
               }
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.color_lens),
+            title: const Text('Cambiar tema'),
+            onTap: () {
+              context.pushNamed('cambiar-tema');
+            },
+          ),
         ],
       ),
     );
@@ -188,13 +193,13 @@ class _HomeViewState extends State<HomeView>
       itemBuilder: (context, index) {
         return Container(
           decoration: BoxDecoration(
-            color: Colors.orange,
+            color: Colors.grey,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Center(
             child: Text(
               'Celda $index',
-              style: const TextStyle(color: Colors.white, fontSize: 18),
+              style: const TextStyle(color: Colors.black, fontSize: 18),
             ),
           ),
         );

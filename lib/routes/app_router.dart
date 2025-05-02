@@ -7,6 +7,7 @@ import 'package:hola_mundo/views/Establecimiento/establecimiento_listView.dart';
 import 'package:hola_mundo/views/Future/future_view.dart';
 import 'package:hola_mundo/views/Isolate/isolate_view.dart';
 import 'package:hola_mundo/views/Timer/timer_view.dart';
+import 'package:hola_mundo/views/provider/change_theme_view.dart';
 import '../views/home_view.dart';
 import '../views/ciclo_vida/ciclo_vida_screen.dart';
 import '../views/paso_parametros/detalle_screen.dart';
@@ -77,6 +78,11 @@ final GoRouter appRouter = GoRouter(
       path: '/register',
       name: 'register',
       builder: (context, state) => const RegisterPage(),
+    ),
+    GoRoute(
+      path: '/cambiar-tema',
+      name: 'cambiar-tema',
+      builder: (context, state) => const ChangeThemeView(),
     ),
   ],
 );

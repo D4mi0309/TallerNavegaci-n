@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static ThemeData get lightTheme {
+  static ThemeData lightTheme(Color seedColor) {
     return ThemeData(
       colorScheme: ColorScheme.fromSeed(
-        seedColor: const Color.fromARGB(255, 20, 83, 165), // Color semilla
+        seedColor: seedColor,
         brightness: Brightness.light, // Tema claro
       ),
       useMaterial3: true,
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Color.fromARGB(255, 20, 83, 165), // Color del AppBar
-        titleTextStyle: TextStyle(
+        backgroundColor: seedColor, // Color de fondo del AppBar
+        titleTextStyle: const TextStyle(
           color: Colors.white, // Texto blanco para el AppBar
           fontSize: 20,
           fontWeight: FontWeight.bold,
